@@ -12,7 +12,6 @@ public class MyFixedSizeStack<E> implements IStack<E> {
         this.n = 0;
     }
 
-
     @Override
     public boolean empty() {
         return n == 0;

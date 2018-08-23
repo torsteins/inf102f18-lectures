@@ -1,4 +1,6 @@
 package week34;
+import static helpers.Verify.*;
+
 
 /**
  * @author Torstein Strømme
@@ -6,26 +8,48 @@ package week34;
 public class TestStacks {
 
     public static void main(String[] args) {
-//        basicTest(new MyFixedSizeStack<String>(10));
-        basicTest(new MyLinkedListStack<String>());
+        basicTest(new MyFixedSizeStack<>(10));
+        basicTest(new MyLinkedListStack<>());
+        basicTest(new MyDynamicArrayStack<>());
+
+        timeTest(new MyLinkedListStack<>());
+        timeTest(new MyDynamicArrayStack<>());
     }
 
     private static void basicTest(IStack<String> s) {
-        assert(false);
-        assert(s.empty()); // Should be true
+        verify(s.empty());
         s.push("A");
         s.push("B");
         s.push("C");
-        System.out.println(s.pop());   // Should be C
-        System.out.println(s.peek());  // Should be B
-        System.out.println(s.empty()); // Should be false
+        verifyEquals("C", s.pop());
+        verifyEquals("B", s.peek());
+        verifyFalse(s.empty());
         s.push("D");
         s.push("E");
-        System.out.println(s.pop());   // Should be E
-        System.out.println(s.pop());   // Should be D
-        System.out.println(s.pop());   // Should be B
-        System.out.println(s.pop());   // Should be A
-        System.out.println(s.empty()); // Should be true
+        verifyEquals("E", s.pop());
+        verifyEquals("D", s.pop());
+        verifyEquals("B", s.pop());
+        verifyEquals("A", s.pop());
+        verify(s.empty());
+        System.out.println("Success!");
+    }
+
+    private static void timeTest(IStack<String> s) {
+        long before = System.currentTimeMillis();
+        for (int t = 0; t < 20; t++) {
+            for (int i = 0; i < 100000; i++) {
+                s.push("A");
+            }
+            for (int i = 0; i < 100000; i++) {
+                s.push("A");
+                s.pop();
+            }
+            for (int i = 0; i < 100000; i++) {
+                s.pop();
+            }
+        }
+        long after = System.currentTimeMillis();
+        System.out.printf("Time %s \t %d ms\n", s.getClass().getCanonicalName(), (after-before));
     }
 
 }
