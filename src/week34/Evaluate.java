@@ -11,16 +11,22 @@ import static helpers.Verify.verifyEquals;
 public class Evaluate {
 
     public static void main(String[] args) {
-//        System.out.println(evaluateA("1"));
-//        System.out.println(evaluateA("( ( 2 + 3 ) * ( 4 * 5 ) )"));
-        System.out.println(evaluateA("( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )"));
-
-
         // Some basic tests of the functionality
-//        test(Evaluate::evaluateA, "A");
-//        test(Evaluate::evaluateB, "B");
+        // Note: the problem was NOT (as I said in class) that
+        // passed functions can't be recursive, the problem was much sillier;
+        // namely that the test cases we generate in the test function
+        // are so big that they take a while - and our printing within
+        // the function didn't help to make any more sense out of it.
+        test(Evaluate::evaluateA, "A");
+        test(Evaluate::evaluateB, "B");
     }
 
+    /**
+     * Generate a few testcases for Evaluation functions, then test them
+     *
+     * @param evaluator
+     * @param desc
+     */
     public static void test(Function<String, Integer> evaluator, String desc) {
         String expr = "( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )";
         verifyEquals(101, evaluator.apply(expr));
@@ -64,37 +70,10 @@ public class Evaluate {
      * (one for each operator), each taking n/2 time
      *
      *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
-     *
      * @param expr
      * @return
      */
     public static int evaluateA(String expr) {
-        System.out.println(expr);
         int i = 0;
         int depth = 0;
         for (String token : expr.split(" ")) {
@@ -119,5 +98,44 @@ public class Evaluate {
         }
         return Integer.parseInt(expr);
     }
+
+    /**
+     * Second attempt: Dijkstra's two-stack algorithm
+     * Runtime: O(n)
+     *
+     * @param expr
+     * @return
+     */
+    public static int evaluateB(String expr) {
+        IStack<Integer> values = new MyDynamicArrayStack<>();
+        IStack<String> operators = new MyDynamicArrayStack<>();
+        for (String token : expr.split(" ")) {
+            if (token.equals("(")) {
+                ;
+            }
+            else if (token.equals("*")) {
+                operators.push(token);
+            }
+            else if (token.equals("+")) {
+                operators.push(token);
+            }
+            else if (token.equals(")")) {
+                int a = values.pop();
+                int b = values.pop();
+                String op = operators.pop();
+                if (op.equals("*")) {
+                    values.push(a*b);
+                }
+                else if (op.equals("+")) {
+                    values.push(a+b);
+                }
+            }
+            else {
+                values.push(Integer.parseInt(token));
+            }
+        }
+        return values.pop();
+    }
+
 
 }
