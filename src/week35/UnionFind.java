@@ -5,6 +5,7 @@ package week35;
  */
 public class UnionFind implements IUnionFind {
     private int[] id;
+    private int[] size;
 
     /**
      * Create a union-find data structure with n singleton
@@ -14,8 +15,10 @@ public class UnionFind implements IUnionFind {
      */
     public UnionFind(int n) {
         this.id = new int[n];
+        this.size = new int[n];
         for (int i = 0; i < n; i++) {
             this.id[i] = i;
+            this.size[i] = 1;
         }
     }
 
@@ -26,12 +29,18 @@ public class UnionFind implements IUnionFind {
      * @param q the item
      */
     public void union(int p, int q) {
-        int idp = this.id[p];
-        int idq = this.id[q];
-        for (int i = 0; i < this.id.length; i++) {
-            if (this.id[i] == idp) {
-                this.id[i] = idq;
-            }
+        int idp = find(p);
+        int idq = find(q);
+
+        if (this.size[idp] > this.size[idq]) {
+            // Idp becomes root
+            this.id[idq] = idp;
+            this.size[idp] += this.size[idq];
+        }
+        else {
+            // Idq becomes root
+            this.id[idp] = idq;
+            this.size[idq] += this.size[idp];
         }
     }
 
@@ -42,7 +51,10 @@ public class UnionFind implements IUnionFind {
      * @return component identifier of item p
      */
     public int find(int p) {
-        return this.id[p];
+        if (this.id[p] == p)
+            return p;
+
+        return find(this.id[p]);
     }
 
     /**
