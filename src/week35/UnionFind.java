@@ -4,6 +4,7 @@ package week35;
  * @author Torstein Strømme
  */
 public class UnionFind implements IUnionFind {
+    private int[] id;
 
     /**
      * Create a union-find data structure with n singleton
@@ -12,7 +13,10 @@ public class UnionFind implements IUnionFind {
      * @param n the number of items
      */
     public UnionFind(int n) {
-
+        this.id = new int[n];
+        for (int i = 0; i < n; i++) {
+            this.id[i] = i;
+        }
     }
 
     /**
@@ -22,7 +26,13 @@ public class UnionFind implements IUnionFind {
      * @param q the item
      */
     public void union(int p, int q) {
-
+        int idp = this.id[p];
+        int idq = this.id[q];
+        for (int i = 0; i < this.id.length; i++) {
+            if (this.id[i] == idp) {
+                this.id[i] = idq;
+            }
+        }
     }
 
     /**
@@ -32,7 +42,7 @@ public class UnionFind implements IUnionFind {
      * @return component identifier of item p
      */
     public int find(int p) {
-        return 0;
+        return this.id[p];
     }
 
     /**
@@ -44,7 +54,7 @@ public class UnionFind implements IUnionFind {
      * @return true if items p and q are connected, false otherwise
      */
     public boolean connected(int p, int q) {
-        return false;
+        return find(p) == find(q);
     }
 
 }
