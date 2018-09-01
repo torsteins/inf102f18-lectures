@@ -9,6 +9,7 @@ public class BinarySearch {
      *
      * @param key the key to be searched for
      * @param arr the array to search
+     * @param <T> element type (must be comparable)
      * @return first index with an element matching the key, or -1 if none was found
      */
     public static <T extends Comparable<T>> int indexOf(T key, T[] arr) {
@@ -22,6 +23,7 @@ public class BinarySearch {
      *
      * @param key the key to be searched for
      * @param arr the array to search
+     * @param <T> element type (must be comparable)
      * @return last index with an element matching the key, or -1 if none was found
      */
     public static <T extends Comparable<T>> int lastIndexOf(T key, T[] arr) {
