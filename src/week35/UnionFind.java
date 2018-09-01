@@ -54,7 +54,8 @@ public class UnionFind implements IUnionFind {
         if (this.id[p] == p)
             return p;
 
-        return find(this.id[p]);
+        this.id[p] = find(this.id[p]);
+        return this.id[p];
     }
 
     /**
