@@ -13,21 +13,6 @@ public class CompareSorts {
     public static void main(String[] args) {
         sanityTest("Insertion");
         doublingTest("Insertion");
-
-
-        Integer[] arr = new Integer[] {5, 3, 4, 9, 1};
-        sort(arr);
-        verifyEquals(Arrays.toString(arr), "[1, 3, 4, 5, 9]");
-
-
-        String[] arrs = new String[] {"abc", "yxz", "ijk"};
-        sort(arrs);
-        verifyEquals(Arrays.toString(arrs), "[abc, ijk, yxz]");
-
-
-    }
-
-    private static void sort(Comparable[] arrs) {
     }
 
 
