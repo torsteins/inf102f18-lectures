@@ -9,10 +9,17 @@ import static helpers.Verify.verifyEquals;
  * @author Torstein Strømme
  */
 public class CompareSorts {
+    private static Random r = new Random();
 
     public static void main(String[] args) {
+        sanityTest("Selection");
         sanityTest("Insertion");
+        sanityTest("Shell");
+        sanityTest("Merge");
         doublingTest("Insertion");
+        doublingTest("Selection");
+        doublingTest("Shell");
+        doublingTest("Merge");
     }
 
 
@@ -83,7 +90,7 @@ public class CompareSorts {
 
         // Find suitable n
         int n = 10;
-        while (timedAlg(alg, n) < maxTimeNs) n *= 2;
+        while (timedAlg(alg, n) + timedAlg(alg, n) + timedAlg(alg, n) < 3*maxTimeNs) n *= 2;
 
         // Run trail runs on n and n/2
         long totTime = 0;
@@ -110,11 +117,10 @@ public class CompareSorts {
      * @return the time elapsed (in nanoseconds)
      */
     private static long timedAlg(String alg, int n) {
-        Random r = new Random();
 
         Integer[] arr = new Integer[n];
         for (int i = 0; i < n; i++) {
-            arr[i] = r.nextInt();
+            arr[i] = CompareSorts.r.nextInt();
         }
 
         long before = System.nanoTime();
