@@ -1,8 +1,11 @@
-package quickLive;
+package week36;
 
 
 // This is the quick sort from the lecture. The mistakes have been fixed but they have not been highlighted (my bad)
 
+/**
+ * @author Erlend Raa Vågset
+ */
 public class LectureQuickSort {
 	
 	public static void main(String[] args) {
