@@ -1,5 +1,7 @@
 package week36;
 
+import week37.HeapSort;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -16,10 +18,13 @@ public class CompareSorts {
         sanityTest("Insertion");
         sanityTest("Shell");
         sanityTest("Merge");
-        doublingTest("Insertion");
-        doublingTest("Selection");
-        doublingTest("Shell");
-        doublingTest("Merge");
+        sanityTest("Quick");
+//        sanityTest("Heap");
+//        doublingTest("Insertion");
+//        doublingTest("Selection");
+//        doublingTest("Shell");
+//        doublingTest("Merge");
+//        doublingTest("Quick");
     }
 
 
@@ -68,6 +73,9 @@ public class CompareSorts {
                 break;
             case "Shell":
                 Shell.sort(a);
+                break;
+            case "Heap":
+                HeapSort.sort(a);
                 break;
             default:
                 throw new IllegalArgumentException(String.format("I don't know algorithm \"%s\"", alg));

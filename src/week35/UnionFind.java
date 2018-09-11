@@ -51,11 +51,14 @@ public class UnionFind implements IUnionFind {
      * @return component identifier of item p
      */
     public int find(int p) {
-        if (this.id[p] == p)
-            return p;
-
-        this.id[p] = find(this.id[p]);
-        return this.id[p];
+        while (id[p] != p) p = id[p];
+        return p;
+//
+//        if (this.id[p] == p)
+//            return p;
+//
+//        this.id[p] = find(this.id[p]);
+//        return this.id[p];
     }
 
     /**
