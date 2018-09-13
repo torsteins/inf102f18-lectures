@@ -67,6 +67,7 @@ public class Quick {
         while (true) {
             while (++i < ub && arr[i].compareTo(key) < 0);
             while (arr[--j].compareTo(key) > 0); // && j > lb ); // check j > lb is redundant. (Why?)
+
             if (i >= j) break;
             swap(i, j, arr);
         }

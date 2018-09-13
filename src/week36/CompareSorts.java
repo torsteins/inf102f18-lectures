@@ -25,6 +25,7 @@ public class CompareSorts {
 //        doublingTest("Shell");
 //        doublingTest("Merge");
 //        doublingTest("Quick");
+//        doublingTest("Heap");
     }
 
 
