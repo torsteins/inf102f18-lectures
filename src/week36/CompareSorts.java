@@ -19,13 +19,13 @@ public class CompareSorts {
         sanityTest("Shell");
         sanityTest("Merge");
         sanityTest("Quick");
-//        sanityTest("Heap");
-//        doublingTest("Insertion");
-//        doublingTest("Selection");
-//        doublingTest("Shell");
-//        doublingTest("Merge");
-//        doublingTest("Quick");
-//        doublingTest("Heap");
+        sanityTest("Heap");
+        doublingTest("Insertion");
+        doublingTest("Selection");
+        doublingTest("Shell");
+        doublingTest("Merge");
+        doublingTest("Quick");
+        doublingTest("Heap");
     }
 
 
@@ -76,7 +76,7 @@ public class CompareSorts {
                 Shell.sort(a);
                 break;
             case "Heap":
-//                HeapSort.sort(a);
+                HeapSort.sort(a);
                 break;
             default:
                 throw new IllegalArgumentException(String.format("I don't know algorithm \"%s\"", alg));
