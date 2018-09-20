@@ -14,12 +14,19 @@ public class HeapSort {
 
         // Step 2: sort down
         int size = arr.length;
-        for (int i = 0; i < arr.length; i++) {
-            swap(0, --size, arr);
+        while (--size >= 0) {
+            swap(0, size, arr);
             sink(0, size, arr);
         }
     }
 
+    /**
+     * An iterative sink method
+     *
+     * @param k index to be sinked
+     * @param size size of the heap in action
+     * @param arr array in which the heap resides
+     */
     private static void sink(int k, int size, Comparable[] arr) {
         int child = firstChild(k);
 
@@ -41,6 +48,13 @@ public class HeapSort {
 
     }
 
+    /**
+     * Returns the first child of the node at index k
+     * Assumes array is 0-indexed.
+     *
+     * @param k node to find first child of
+     * @return first child of node k
+     */
     private static int firstChild(int k) {
         return (k + 1) * 2 - 1;
     }
@@ -53,9 +67,8 @@ public class HeapSort {
     }
 
     private static void swap(int i, int j, Comparable[] arr) {
-        // Another (less common) way to measure complexity of a sorting algorithm
-        // is to count the number of calls to this function. That's when
-        // selection sort really shines.
+        // Another way to measure complexity of a sorting algorithm
+        // is to count the number of calls to this function.
         Comparable tmp = arr[i];
         arr[i] = arr[j];
         arr[j] = tmp;

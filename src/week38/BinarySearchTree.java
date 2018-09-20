@@ -2,12 +2,12 @@ package week38;
 
 import week37.ISymTable;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-
+/**
+ * @author Øyvind
+ */
 public class BinarySearchTree<Key extends Comparable<Key>, Value> implements ISymTable<Key, Value> {
 
     private class Node {

@@ -6,7 +6,7 @@ package week37;
 @SuppressWarnings("unchecked")
 public class IndexPQ<E extends Comparable<E>> implements IIndexPQ<E> {
 
-    IndexPQ () {
+    public IndexPQ(int maxIndex) {
 
     }
 

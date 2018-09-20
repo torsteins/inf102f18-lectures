@@ -1,20 +1,23 @@
 package week38;
 
+import week37.ISymTable;
+
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static helpers.Verify.verifyEquals;
-import static helpers.Verify.verify;
-import static helpers.Verify.verifyFalse;
+import static helpers.Verify.*;
 
-
+/**
+ * @author Øyvind
+ */
 public class BST_tester {
 
     public static void main(String[] args) {
         test(new BinarySearchTree<String, Integer>());
+//        test(new RedBlackBST<String, Integer>());
     }
 
-    private static void test(BinarySearchTree<String, Integer> bst) {
+    private static void test(ISymTable<String, Integer> bst) {
         System.out.println("Testing binary search tree: " + bst.getClass().getCanonicalName());
 
         verifyEquals(bst.size(), 0);
@@ -62,11 +65,5 @@ public class BST_tester {
 
 
         System.out.println("All ok!");
-    }
-
-    static void verifyNull(Object o) {
-        if (o != null) {
-            throw new AssertionError("Object " + o + " not null!");
-        }
     }
 }

@@ -17,10 +17,16 @@ public class Verify {
             throw new AssertionError("Verification failed");
     }
 
-    public static <T> void verifyEquals(Comparable<T> a, Comparable<T> b) {
-        if (!a.equals(b))
+    public static <T> void verifyEquals(Comparable<T> expected, Comparable<T> result) {
+        if (!expected.equals(result))
             throw new AssertionError(String.format(
-                    "Verification failed: %s not equal to %s", a.toString(), b.toString()
+                    "Verification failed: %s not equal to %s", expected.toString(), result.toString()
             ));
+    }
+
+    public static void verifyNull(Object o) {
+        if (o != null) {
+            throw new AssertionError("Object " + o + " not null!");
+        }
     }
 }
