@@ -13,12 +13,12 @@ import static helpers.Verify.*;
 public class BST_tester {
 
     public static void main(String[] args) {
-        test(new BinarySearchTree<String, Integer>());
-//        test(new RedBlackBST<String, Integer>());
+        test(new BinarySearchTree<>());
+        test(new RedBlackBST<>());
     }
 
     private static void test(ISymTable<String, Integer> bst) {
-        System.out.println("Testing binary search tree: " + bst.getClass().getCanonicalName());
+        System.out.print("Sanity test of binary search tree: " + bst.getClass().getCanonicalName() + "... ");
 
         verifyEquals(bst.size(), 0);
         verifyFalse(bst.containsKey("A"));
@@ -64,6 +64,6 @@ public class BST_tester {
         verifyEquals("A, B, C", all);
 
 
-        System.out.println("All ok!");
+        System.out.println("all ok!");
     }
 }

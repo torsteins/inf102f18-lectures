@@ -1,9 +1,8 @@
 package week37;
 
 import helpers.Kattio;
+import week38.RedBlackBST;
 
-import java.util.Map;
-import java.util.TreeMap;
 
 
 /**
@@ -46,7 +45,7 @@ public class WordFrequency {
         Kattio io = new Kattio(System.in);
         int n = io.getInt(), k = io.getInt(), m = io.getInt();
 
-        Map<String, Integer> wCount = new TreeMap<>();
+        ISymTable<String, Integer> wCount = new RedBlackBST<>();
 
         // For every word:
         //     Add 1 to its count
@@ -61,7 +60,7 @@ public class WordFrequency {
         // Create an array with all pairs (word, count)
         Word[] allWords = new Word[wCount.size()];
         int j = 0;
-        for (String key : wCount.keySet()) {
+        for (String key : wCount.keys()) {
             allWords[j++] = new Word(key, wCount.get(key));
         }
 
