@@ -18,10 +18,11 @@ public class Merge {
     private static void sort(Comparable[] arr, Comparable[] aux, int lb, int ub) {
         if (lb + 1 >= ub) return;
 
-        sort(arr, aux, lb, (lb + ub) / 2);
-        sort(arr, aux, (lb + ub) / 2, ub);
+        int mid = (lb + ub) / 2;
+        sort(arr, aux, lb, mid);
+        sort(arr, aux, mid, ub);
 
-        merge(arr, aux, lb, (lb + ub) / 2, ub);
+        merge(arr, aux, lb, mid, ub);
     }
 
     private static void merge(Comparable[] arr, Comparable[] aux, int lb, int mid, int ub) {

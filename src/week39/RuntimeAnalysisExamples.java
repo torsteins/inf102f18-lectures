@@ -10,10 +10,17 @@ public class RuntimeAnalysisExamples {
         return a + b;
     }
 
+
     int sum(int[] arr) {
         int total = 0;
-        for (int i = 0; i < arr.length; i++) {
-            total = total + arr[i];
+
+        int i = 0;
+        while (true) {
+            if (i >= arr.length) break;
+            int num = arr[i];
+            total = total + num;
+            i = i + 1;
+            // Here is the actual jump
         }
         return total;
     }
@@ -29,29 +36,19 @@ public class RuntimeAnalysisExamples {
     void functionAA(int n) {
         step();
         step();
-        for (int i = n; i > 0; i = i / 3) {
-            for (int j = 0; j < i; j++) {
-                for (int k = 0; k < 100; k++) {
-                    step();
-                }
-            }
-        }
-    }
 
-    void functionBB(int n) {
-        for (int i = 0; i < n; i++) {
-            step();
-            step();
-        }
-        for (int i = n; i > 0; i--) {
-            step();
-        }
-        for (int i = n; i > 0; i = i / 2) {
-            for (int j = 0; j*j < n; j++) {
+        // Outer loop goes log_3 n times, with values n, n/3, n/(3^2), n/(3^3) ... 1 (all interger division)
+        for (int i = n; i > 0; i = i / 3) {
+            // Inner loop goes i times
+            for (int j = 0; j < i; j++) {
                 step();
             }
         }
+        // Exact runtime: Sum from k=0 to floor(log_3 n) of floor(n/(3^k))
+        // tilde runtime (by plugging into Wolfram alpha without the floors) ~3n/2
+        // Big-O runtime: O(n)
     }
+
 
 
 
