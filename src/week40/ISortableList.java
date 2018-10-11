@@ -10,7 +10,7 @@ package week40;
  * method, and the list must consist of comparable objects.
  *
  */
-public interface ISortableList<E extends Comparable<E>> extends Iterable<E> {
+public interface ISortableList<E extends Comparable<E>> extends IBag<E> {
 
     /**
      * Add the item at the end of the list

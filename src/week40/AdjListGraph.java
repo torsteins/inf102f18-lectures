@@ -12,7 +12,7 @@ public class AdjListGraph implements IGraph {
     int m = 0;
     int n = 0;
 
-    AdjListGraph(int n) {
+    public AdjListGraph(int n) {
         this.adjList = new SortableLinkedList[n];
         for (int i = 0; i < n; i++) {
             this.adjList[i] = new SortableLinkedList<>();
@@ -50,7 +50,7 @@ public class AdjListGraph implements IGraph {
     }
 
     @Override
-    public Iterable<Integer> adj(int u) {
+    public IBag<Integer> adj(int u) {
         // Runtime O(1)
         return this.adjList[u];
     }

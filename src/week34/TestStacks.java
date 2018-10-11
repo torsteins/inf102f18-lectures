@@ -17,20 +17,20 @@ public class TestStacks {
     }
 
     private static void basicTest(IStack<String> s) {
-        verify(s.empty());
+        verify(s.isEmpty());
         s.push("A");
         s.push("B");
         s.push("C");
         verifyEquals("C", s.pop());
         verifyEquals("B", s.peek());
-        verifyFalse(s.empty());
+        verifyFalse(s.isEmpty());
         s.push("D");
         s.push("E");
         verifyEquals("E", s.pop());
         verifyEquals("D", s.pop());
         verifyEquals("B", s.pop());
         verifyEquals("A", s.pop());
-        verify(s.empty());
+        verify(s.isEmpty());
         System.out.println("Success!");
     }
 

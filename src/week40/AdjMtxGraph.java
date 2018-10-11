@@ -1,7 +1,5 @@
 package week40;
 
-import week38.RedBlackBST;
-
 /**
  * @author Torstein Strømme
  */
@@ -41,7 +39,7 @@ public class AdjMtxGraph implements IGraph {
     }
 
     @Override
-    public Iterable<Integer> adj(int u) {
+    public IBag<Integer> adj(int u) {
         // Runtime O(n)
         SortableLinkedList<Integer> nbrs = new SortableLinkedList<>();
         for (int i = 0; i < this.n; i++) {

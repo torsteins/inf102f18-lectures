@@ -1,9 +1,11 @@
 package week34;
 
+import java.util.Iterator;
+
 /**
  * @author Torstein Strømme
  */
-public class MyDynamicArrayStack<E> implements IStack<E> {
+public class MyDynamicArrayStack<E> extends IStack<E> {
     private E[] data;
     private int n;
 
@@ -38,14 +40,30 @@ public class MyDynamicArrayStack<E> implements IStack<E> {
         this.data = newdata;
     }
 
-
-    @Override
-    public boolean empty() {
-        return n == 0;
-    }
-
     @Override
     public E peek() {
         return data[n-1];
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
+            int i = MyDynamicArrayStack.this.n;
+
+            @Override
+            public boolean hasNext() {
+                return this.i > 0;
+            }
+
+            @Override
+            public E next() {
+                return MyDynamicArrayStack.this.data[--this.i];
+            }
+        };
+    }
+
+    @Override
+    public int size() {
+        return this.n;
     }
 }

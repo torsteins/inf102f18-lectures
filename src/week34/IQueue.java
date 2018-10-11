@@ -1,15 +1,11 @@
 package week34;
 
+import week40.IBag;
+
 /**
  * @author Torstein Strømme
  */
-public interface IQueue<E> {
-
-    /**
-     * Tests if the queue is empty.
-     * @return true if empty, false otherwise
-     */
-    public boolean empty();
+public interface IQueue<E> extends IBag {
 
     /**
      * Remove and return the first element of the queue.

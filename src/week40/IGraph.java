@@ -37,6 +37,6 @@ public interface IGraph {
      * @param u a vertex
      * @return iterator over u's neighbours
      */
-    Iterable<Integer> adj(int u);
+    IBag<Integer> adj(int u);
 
 }
