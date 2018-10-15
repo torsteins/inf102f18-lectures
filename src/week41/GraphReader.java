@@ -23,4 +23,17 @@ public class GraphReader {
         }
         return graph;
     }
+
+    public static IDigraph readDigraph(String filename) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
+        int n = Integer.parseInt(br.readLine().trim());
+        int m = Integer.parseInt(br.readLine().trim());
+
+        IDigraph graph = new AdjListDigraph(n);
+        for (int i = 0; i < m; i++) {
+            String[] edj = br.readLine().trim().split("\\s+");
+            graph.addEdge(Integer.parseInt(edj[0]), Integer.parseInt(edj[1]));
+        }
+        return graph;
+    }
 }
